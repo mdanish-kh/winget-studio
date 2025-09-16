@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using CommunityToolkit.WinUI;
@@ -18,9 +18,11 @@ using WinGetStudio.Services.DesiredStateConfiguration.Extensions;
 using WinGetStudio.Services.Settings;
 using WinGetStudio.Services.Settings.Extensions;
 using WinGetStudio.Services.Telemetry.Extensions;
+using WinGetStudio.Services.VisualFeedback.Extensions;
 using WinGetStudio.Services.WindowsPackageManager.Extensions;
 using WinGetStudio.ViewModels;
 using WinGetStudio.ViewModels.ConfigurationFlow;
+using WinGetStudio.ViewModels.Controls;
 using WinGetStudio.Views;
 using WinGetStudio.Views.ConfigurationFlow;
 
@@ -97,6 +99,7 @@ public partial class App : Application
                 services.AddWinGet();
                 services.AddSettings();
                 services.AddTelemetry();
+                services.AddVisualFeedback();
 
                 // Views and ViewModels
                 services.AddTransient<SettingsViewModel>();
@@ -115,6 +118,8 @@ public partial class App : Application
                 services.AddTransient<PreviewFileViewModel>();
                 services.AddTransient<ApplyFilePage>();
                 services.AddTransient<ApplyFileViewModel>();
+                services.AddTransient<NotificationPaneViewModel>();
+                services.AddTransient<LoadingProgressBarViewModel>();
 
                 // Factories
                 services.AddSingleton<ValidationViewModelFactory>(sp => () => ActivatorUtilities.CreateInstance<ValidationViewModel>(sp));
